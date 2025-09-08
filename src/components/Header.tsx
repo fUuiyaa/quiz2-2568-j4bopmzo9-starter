@@ -6,7 +6,8 @@ import {
   ActionIcon,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { IconSun, IconMoon } from "@tabler/icons-react";
+import { IconSun, IconMoon, IconToolsKitchen3 } from "@tabler/icons-react";
+
 
 interface HeaderComponentProps {
   opened: boolean;
@@ -25,7 +26,7 @@ export default function HeaderComponent({
   
   return (
     <Group p="md" justify="space-between">
-      <Group>
+      <Group gap ={16}>
         {isMobile && (
           <Burger
             opened={opened}
@@ -33,13 +34,22 @@ export default function HeaderComponent({
             aria-label="Toggle navigation"
           />
         )}
+        <ActionIcon
+          variant = "filled"
+          color = {isDark ? "yellow" : "blue"}
+          onClick = {toggleColorScheme}
+          size = "lg"
+          aria-label={isDark ? "Light mode" : "Dark mode"}
+        >
+          {isDark? <IconToolsKitchen3 size ={20} /> : <IconToolsKitchen3 size = {20} />}
+        </ActionIcon>
         <Text
           size="xl"
           fw={900}
           variant="gradient"
           gradient={{ from: "red", to: "blue", deg: 90 }}
         >
-          TRACKER-APP
+          Tracker App
         </Text>
       </Group>
       <Group gap={5}>
